@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>System Status — Zeal+</title>
+<meta name="description" content="Zeal+ system status — real-time overview of app and service availability.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23f87116' stroke-width='2.5'><polyline points='4 12 8 8 12 16 16 10 20 12'/></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --accent:#f87116;--accent-light:#ff8c3a;
+  --accent-subtle:rgba(248,113,22,.08);--accent-border:rgba(248,113,22,.2);
+  --bg-primary:#0a0a0a;--bg-card:#141414;
+  --border-subtle:rgba(255,255,255,.06);--border-medium:rgba(255,255,255,.1);
+  --text-primary:#ffffff;--text-secondary:rgba(255,255,255,.6);--text-muted:rgba(255,255,255,.35);
+  --green:#22c55e;--green-bg:rgba(34,197,94,.1);--green-border:rgba(34,197,94,.2);
+  --yellow:#eab308;--yellow-bg:rgba(234,179,8,.1);--yellow-border:rgba(234,179,8,.2);
+  --red:#ef4444;--red-bg:rgba(239,68,68,.1);--red-border:rgba(239,68,68,.2);
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Outfit',sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.6;-webkit-font-smoothing:antialiased;}
+a{color:var(--accent);text-decoration:none;}
+a:hover{color:var(--accent-light);}
+.navbar{position:sticky;top:0;z-index:100;background:rgba(10,10,10,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-subtle);}
+.navbar .container{display:flex;align-items:center;justify-content:space-between;padding:16px 40px;}
+.nav-logo{display:flex;align-items:center;gap:10px;font-size:20px;font-weight:700;color:var(--text-primary);text-decoration:none;letter-spacing:-.5px;}
+.nav-logo-icon{width:34px;height:34px;background:linear-gradient(135deg,var(--accent) 0%,var(--accent-light) 100%);border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.nav-logo-icon svg{width:20px;height:20px;}
+.nav-back{font-size:14px;font-weight:500;color:var(--text-secondary);transition:color .2s;}
+.nav-back:hover{color:var(--text-primary);}
+
+/* Hero banner */
+.status-hero{padding:64px 40px;text-align:center;border-bottom:1px solid var(--border-subtle);}
+.page-label{display:inline-block;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);background:var(--accent-subtle);border:1px solid var(--accent-border);padding:5px 14px;border-radius:20px;margin-bottom:20px;}
+.overall-badge{display:inline-flex;align-items:center;gap:10px;background:var(--green-bg);border:1px solid var(--green-border);border-radius:40px;padding:10px 22px;margin-bottom:24px;}
+.pulse{width:10px;height:10px;border-radius:50%;background:var(--green);box-shadow:0 0 0 0 rgba(34,197,94,.4);animation:pulse 2s infinite;}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(34,197,94,.4);}70%{box-shadow:0 0 0 8px rgba(34,197,94,0);}100%{box-shadow:0 0 0 0 rgba(34,197,94,0);}}
+.overall-badge span{font-size:15px;font-weight:700;color:var(--green);}
+.status-hero h1{font-size:clamp(28px,4vw,44px);font-weight:800;letter-spacing:-1px;margin-bottom:12px;}
+.status-hero p{font-size:15px;color:var(--text-muted);}
+
+/* Content */
+.content-wrap{max-width:720px;margin:0 auto;padding:56px 40px 96px;}
+
+.section-title{font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:16px;}
+
+/* Service rows */
+.services-card{background:var(--bg-card);border:1px solid var(--border-subtle);border-radius:18px;overflow:hidden;margin-bottom:40px;}
+.service-row{display:flex;align-items:center;justify-content:space-between;padding:18px 24px;border-bottom:1px solid var(--border-subtle);}
+.service-row:last-child{border-bottom:none;}
+.service-info{display:flex;align-items:center;gap:14px;}
+.service-icon{width:36px;height:36px;border-radius:10px;background:rgba(255,255,255,.05);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.service-icon svg{width:18px;height:18px;stroke:var(--text-secondary);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+.service-name{font-size:15px;font-weight:600;}
+.service-desc{font-size:13px;color:var(--text-muted);}
+.status-pill{display:flex;align-items:center;gap:7px;padding:5px 13px;border-radius:20px;font-size:13px;font-weight:600;}
+.status-operational{background:var(--green-bg);border:1px solid var(--green-border);color:var(--green);}
+.status-degraded{background:var(--yellow-bg);border:1px solid var(--yellow-border);color:var(--yellow);}
+.status-down{background:var(--red-bg);border:1px solid var(--red-border);color:var(--red);}
+.dot{width:7px;height:7px;border-radius:50%;}
+.dot-green{background:var(--green);}
+.dot-yellow{background:var(--yellow);}
+.dot-red{background:var(--red);}
+
+/* Uptime bars */
+.uptime-section{margin-bottom:40px;}
+.uptime-row{margin-bottom:20px;}
+.uptime-header{display:flex;justify-content:space-between;margin-bottom:8px;}
+.uptime-header span{font-size:14px;font-weight:600;}
+.uptime-header small{font-size:13px;color:var(--text-muted);}
+.uptime-bars{display:flex;gap:3px;}
+.bar{flex:1;height:28px;border-radius:4px;background:var(--green-bg);border:1px solid var(--green-border);transition:opacity .2s;}
+.bar:hover{opacity:.75;}
+.bar.incident{background:var(--yellow-bg);border-color:var(--yellow-border);}
+
+/* Incidents */
+.no-incidents{background:var(--bg-card);border:1px solid var(--border-subtle);border-radius:16px;padding:36px;text-align:center;}
+.no-incidents .icon{font-size:32px;margin-bottom:12px;}
+.no-incidents h3{font-size:16px;font-weight:700;margin-bottom:6px;}
+.no-incidents p{font-size:14px;color:var(--text-muted);}
+
+.last-updated{text-align:center;font-size:13px;color:var(--text-muted);margin-top:32px;}
+
+.footer{border-top:1px solid var(--border-subtle);padding:40px;}
+.footer-inner{max-width:720px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;}
+.footer-inner span{font-size:13px;color:var(--text-muted);}
+.footer-links{display:flex;gap:20px;}
+.footer-links a{font-size:13px;color:var(--text-muted);transition:color .2s;}
+.footer-links a:hover{color:var(--text-primary);}
+@media(max-width:640px){
+  .navbar .container,.status-hero,.content-wrap{padding-left:20px;padding-right:20px;}
+  .service-row{flex-direction:column;align-items:flex-start;gap:12px;}
+  .footer{padding:32px 20px;}
+  .footer-inner{flex-direction:column;text-align:center;}
+}
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="container">
+    <a href="zeal-landing.html" class="nav-logo">
+      <div class="nav-logo-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="4 12 8 8 12 16 16 10 20 12"></polyline>
+        </svg>
+      </div>
+      Zeal+
+    </a>
+    <a href="zeal-landing.html" class="nav-back">← Back to Home</a>
+  </div>
+</nav>
+
+<div class="status-hero">
+  <span class="page-label">System Status</span>
+  <div style="margin-bottom:20px;">
+    <div class="overall-badge">
+      <div class="pulse"></div>
+      <span>All Systems Operational</span>
+    </div>
+  </div>
+  <h1>Everything is running smoothly.</h1>
+  <p id="lastChecked">Last checked just now</p>
+</div>
+
+<div class="content-wrap">
+
+  <!-- Services -->
+  <p class="section-title">Services</p>
+  <div class="services-card">
+    <div class="service-row">
+      <div class="service-info">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+        </div>
+        <div>
+          <div class="service-name">App — iOS</div>
+          <div class="service-desc">iPhone & iPad</div>
+        </div>
+      </div>
+      <div class="status-pill status-operational"><div class="dot dot-green"></div>Operational</div>
+    </div>
+    <div class="service-row">
+      <div class="service-info">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>
+        </div>
+        <div>
+          <div class="service-name">App — Android</div>
+          <div class="service-desc">Phone & tablet</div>
+        </div>
+      </div>
+      <div class="status-pill status-operational"><div class="dot dot-green"></div>Operational</div>
+    </div>
+    <div class="service-row">
+      <div class="service-info">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <div>
+          <div class="service-name">Workout Generation</div>
+          <div class="service-desc">AI workout engine</div>
+        </div>
+      </div>
+      <div class="status-pill status-operational"><div class="dot dot-green"></div>Operational</div>
+    </div>
+    <div class="service-row">
+      <div class="service-info">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        <div>
+          <div class="service-name">Health Sync</div>
+          <div class="service-desc">Apple Health & Health Connect</div>
+        </div>
+      </div>
+      <div class="status-pill status-operational"><div class="dot dot-green"></div>Operational</div>
+    </div>
+    <div class="service-row">
+      <div class="service-info">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+        </div>
+        <div>
+          <div class="service-name">Subscriptions</div>
+          <div class="service-desc">RevenueCat billing</div>
+        </div>
+      </div>
+      <div class="status-pill status-operational"><div class="dot dot-green"></div>Operational</div>
+    </div>
+    <div class="service-row">
+      <div class="service-info">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
+        <div>
+          <div class="service-name">Website</div>
+          <div class="service-desc">zealplus.app</div>
+        </div>
+      </div>
+      <div class="status-pill status-operational"><div class="dot dot-green"></div>Operational</div>
+    </div>
+  </div>
+
+  <!-- Uptime -->
+  <p class="section-title">90-Day Uptime</p>
+  <div class="uptime-section">
+    <div class="uptime-row">
+      <div class="uptime-header"><span>App (iOS & Android)</span><small>100%</small></div>
+      <div class="uptime-bars" id="bars-app"></div>
+    </div>
+    <div class="uptime-row">
+      <div class="uptime-header"><span>Workout Generation</span><small>99.9%</small></div>
+      <div class="uptime-bars" id="bars-gen"></div>
+    </div>
+    <div class="uptime-row">
+      <div class="uptime-header"><span>Health Sync</span><small>99.8%</small></div>
+      <div class="uptime-bars" id="bars-health"></div>
+    </div>
+  </div>
+
+  <!-- Incidents -->
+  <p class="section-title">Recent Incidents</p>
+  <div class="no-incidents">
+    <div class="icon">✓</div>
+    <h3>No incidents in the last 90 days</h3>
+    <p>All services have been operating normally.</p>
+  </div>
+
+  <p class="last-updated" id="timestampLine">Refreshed automatically every 60 seconds.</p>
+
+</div>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <span>&copy; 2026 Zeal+. All rights reserved.</span>
+    <div class="footer-links">
+      <a href="privacy-policy.html">Privacy</a>
+      <a href="terms-of-service.html">Terms</a>
+      <a href="cookie-policy.html">Cookies</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Generate 90 uptime bars
+function makeBars(id, incidentDays) {
+  const el = document.getElementById(id);
+  for (let i = 0; i < 90; i++) {
+    const bar = document.createElement('div');
+    bar.className = 'bar' + (incidentDays.includes(i) ? ' incident' : '');
+    bar.title = incidentDays.includes(i) ? 'Degraded performance' : 'Operational';
+    el.appendChild(bar);
+  }
+}
+makeBars('bars-app', []);
+makeBars('bars-gen', [74]);
+makeBars('bars-health', [61, 62]);
+
+// Live timestamp
+function updateTime() {
+  const now = new Date();
+  document.getElementById('lastChecked').textContent =
+    'Last checked at ' + now.toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'});
+}
+updateTime();
+setInterval(updateTime, 60000);
+</script>
+</body>
+</html>

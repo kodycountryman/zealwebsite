@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Zeal+</title>
+<meta name="description" content="Get in touch with the Zeal+ support team.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23f87116' stroke-width='2.5'><polyline points='4 12 8 8 12 16 16 10 20 12'/></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --accent:#f87116;--accent-light:#ff8c3a;--accent-dark:#d96010;
+  --accent-subtle:rgba(248,113,22,.08);--accent-border:rgba(248,113,22,.2);
+  --bg-primary:#0a0a0a;--bg-card:#141414;--bg-card-hover:#1a1a1a;
+  --border-subtle:rgba(255,255,255,.06);--border-medium:rgba(255,255,255,.1);
+  --text-primary:#ffffff;--text-secondary:rgba(255,255,255,.6);--text-muted:rgba(255,255,255,.35);
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Outfit',sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.6;-webkit-font-smoothing:antialiased;}
+a{color:var(--accent);text-decoration:none;}
+a:hover{color:var(--accent-light);}
+.navbar{position:sticky;top:0;z-index:100;background:rgba(10,10,10,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-subtle);}
+.navbar .container{display:flex;align-items:center;justify-content:space-between;padding:16px 40px;}
+.nav-logo{display:flex;align-items:center;gap:10px;font-size:20px;font-weight:700;color:var(--text-primary);text-decoration:none;letter-spacing:-.5px;}
+.nav-logo-icon{width:34px;height:34px;background:linear-gradient(135deg,var(--accent) 0%,var(--accent-light) 100%);border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.nav-logo-icon svg{width:20px;height:20px;}
+.nav-back{font-size:14px;font-weight:500;color:var(--text-secondary);transition:color .2s;}
+.nav-back:hover{color:var(--text-primary);}
+.page-hero{padding:72px 40px 48px;text-align:center;border-bottom:1px solid var(--border-subtle);}
+.page-label{display:inline-block;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);background:var(--accent-subtle);border:1px solid var(--accent-border);padding:5px 14px;border-radius:20px;margin-bottom:20px;}
+.page-hero h1{font-size:clamp(32px,5vw,52px);font-weight:800;letter-spacing:-1.5px;margin-bottom:16px;}
+.page-hero p{font-size:16px;color:var(--text-secondary);max-width:520px;margin:0 auto;}
+.content-wrap{max-width:900px;margin:0 auto;padding:64px 40px 96px;}
+
+.two-col{display:grid;grid-template-columns:1fr 1.2fr;gap:48px;align-items:start;}
+
+/* Contact info */
+.contact-info h2{font-size:22px;font-weight:700;margin-bottom:24px;}
+.info-item{display:flex;gap:16px;margin-bottom:28px;align-items:flex-start;}
+.info-icon{width:44px;height:44px;background:var(--accent-subtle);border:1px solid var(--accent-border);border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.info-icon svg{width:20px;height:20px;stroke:var(--accent);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+.info-text h4{font-size:14px;font-weight:700;margin-bottom:4px;}
+.info-text p,.info-text a{font-size:14px;color:var(--text-secondary);line-height:1.5;}
+.divider{height:1px;background:var(--border-subtle);margin:32px 0;}
+.response-note{background:var(--bg-card);border:1px solid var(--border-subtle);border-radius:14px;padding:20px 24px;}
+.response-note p{font-size:13px;color:var(--text-muted);margin:0;}
+.response-note strong{color:var(--text-secondary);}
+
+/* Form */
+.contact-form-card{background:var(--bg-card);border:1px solid var(--border-subtle);border-radius:20px;padding:40px;}
+.contact-form-card h2{font-size:20px;font-weight:700;margin-bottom:8px;}
+.contact-form-card > p{font-size:14px;color:var(--text-secondary);margin-bottom:28px;}
+.form-group{margin-bottom:18px;}
+.form-group label{display:block;font-size:13px;font-weight:600;color:var(--text-secondary);margin-bottom:8px;}
+.form-input{width:100%;background:rgba(255,255,255,.04);border:1px solid var(--border-medium);border-radius:10px;padding:13px 16px;font-family:'Outfit',sans-serif;font-size:15px;color:var(--text-primary);outline:none;transition:border-color .2s;}
+.form-input::placeholder{color:var(--text-muted);}
+.form-input:focus{border-color:var(--accent-border);}
+.form-input option{background:#141414;}
+textarea.form-input{min-height:130px;resize:vertical;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.submit-btn{width:100%;background:var(--accent);color:#fff;font-family:'Outfit',sans-serif;font-size:15px;font-weight:600;padding:15px;border-radius:12px;border:none;cursor:pointer;transition:background .2s,transform .2s;margin-top:8px;}
+.submit-btn:hover{background:var(--accent-light);transform:translateY(-1px);}
+
+/* Success state */
+.success-msg{display:none;text-align:center;padding:32px 0;}
+.success-msg .check{width:60px;height:60px;background:rgba(34,197,94,.12);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;}
+.success-msg .check svg{width:28px;height:28px;stroke:#4ade80;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;}
+.success-msg h3{font-size:20px;font-weight:700;margin-bottom:8px;}
+.success-msg p{font-size:15px;color:var(--text-secondary);}
+
+.footer{border-top:1px solid var(--border-subtle);padding:40px;}
+.footer-inner{max-width:900px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;}
+.footer-inner span{font-size:13px;color:var(--text-muted);}
+.footer-links{display:flex;gap:20px;}
+.footer-links a{font-size:13px;color:var(--text-muted);transition:color .2s;}
+.footer-links a:hover{color:var(--text-primary);}
+@media(max-width:768px){
+  .two-col{grid-template-columns:1fr;}
+  .form-row{grid-template-columns:1fr;}
+}
+@media(max-width:640px){
+  .navbar .container,.page-hero,.content-wrap{padding-left:20px;padding-right:20px;}
+  .contact-form-card{padding:24px 20px;}
+  .footer{padding:32px 20px;}
+  .footer-inner{flex-direction:column;text-align:center;}
+}
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="container">
+    <a href="zeal-landing.html" class="nav-logo">
+      <div class="nav-logo-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="4 12 8 8 12 16 16 10 20 12"></polyline>
+        </svg>
+      </div>
+      Zeal+
+    </a>
+    <a href="zeal-landing.html" class="nav-back">← Back to Home</a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <span class="page-label">Support</span>
+  <h1>Contact Us</h1>
+  <p>Have a question, bug report, or feature request? We'd love to hear from you.</p>
+</div>
+
+<div class="content-wrap">
+  <div class="two-col">
+
+    <div class="contact-info">
+      <h2>Get in Touch</h2>
+
+      <div class="info-item">
+        <div class="info-icon">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <div class="info-text">
+          <h4>Email Support</h4>
+          <a href="mailto:support@zealplus.app">support@zealplus.app</a>
+          <p>For account issues, billing, and general help.</p>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <div class="info-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
+        </div>
+        <div class="info-text">
+          <h4>System Status</h4>
+          <a href="status.html">Check current status →</a>
+          <p>See if there are any ongoing incidents.</p>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <div class="info-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <div class="info-text">
+          <h4>Help Center</h4>
+          <a href="help-center.html">Browse articles →</a>
+          <p>Guides for common questions and features.</p>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="response-note">
+        <p><strong>Response time:</strong> We typically reply within 24 hours on business days. For urgent issues, include "URGENT" in your subject line.</p>
+      </div>
+    </div>
+
+    <div class="contact-form-card">
+      <h2>Send a Message</h2>
+      <p>Fill out the form and we'll get back to you as soon as possible.</p>
+
+      <form id="contactForm" onsubmit="submitForm(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fname">First name</label>
+            <input class="form-input" id="fname" type="text" placeholder="Alex" required>
+          </div>
+          <div class="form-group">
+            <label for="lname">Last name</label>
+            <input class="form-input" id="lname" type="text" placeholder="Johnson">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">Email address</label>
+          <input class="form-input" id="email" type="email" placeholder="alex@example.com" required>
+        </div>
+        <div class="form-group">
+          <label for="subject">Subject</label>
+          <select class="form-input" id="subject">
+            <option value="">Select a topic...</option>
+            <option>General question</option>
+            <option>Bug report</option>
+            <option>Feature request</option>
+            <option>Billing / subscription</option>
+            <option>Account issue</option>
+            <option>Health sync problem</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea class="form-input" id="message" placeholder="Describe your question or issue in detail..." required></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Send Message</button>
+      </form>
+
+      <div class="success-msg" id="successMsg">
+        <div class="check">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <h3>Message sent!</h3>
+        <p>Thanks for reaching out. We'll get back to you within 24 hours at the email you provided.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <span>&copy; 2026 Zeal+. All rights reserved.</span>
+    <div class="footer-links">
+      <a href="privacy-policy.html">Privacy</a>
+      <a href="terms-of-service.html">Terms</a>
+      <a href="cookie-policy.html">Cookies</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+function submitForm(e) {
+  e.preventDefault();
+  document.getElementById('contactForm').style.display = 'none';
+  document.getElementById('successMsg').style.display = 'block';
+}
+</script>
+</body>
+</html>

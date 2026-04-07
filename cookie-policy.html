@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cookie Policy — Zeal+</title>
+<meta name="description" content="Zeal+ Cookie Policy — how we use cookies and similar technologies on our website.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23f87116' stroke-width='2.5'><polyline points='4 12 8 8 12 16 16 10 20 12'/></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --accent:#f87116;--accent-light:#ff8c3a;
+  --accent-subtle:rgba(248,113,22,.08);--accent-border:rgba(248,113,22,.2);
+  --bg-primary:#0a0a0a;--bg-card:#141414;
+  --border-subtle:rgba(255,255,255,.06);--border-medium:rgba(255,255,255,.1);
+  --text-primary:#ffffff;--text-secondary:rgba(255,255,255,.6);--text-muted:rgba(255,255,255,.35);
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Outfit',sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.6;-webkit-font-smoothing:antialiased;}
+a{color:var(--accent);text-decoration:none;}
+a:hover{color:var(--accent-light);}
+.navbar{position:sticky;top:0;z-index:100;background:rgba(10,10,10,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-subtle);}
+.navbar .container{display:flex;align-items:center;justify-content:space-between;padding:16px 40px;}
+.nav-logo{display:flex;align-items:center;gap:10px;font-size:20px;font-weight:700;color:var(--text-primary);text-decoration:none;letter-spacing:-.5px;}
+.nav-logo-icon{width:34px;height:34px;background:linear-gradient(135deg,var(--accent) 0%,var(--accent-light) 100%);border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.nav-logo-icon svg{width:20px;height:20px;}
+.nav-back{font-size:14px;font-weight:500;color:var(--text-secondary);transition:color .2s;}
+.nav-back:hover{color:var(--text-primary);}
+.page-hero{padding:72px 40px 48px;text-align:center;border-bottom:1px solid var(--border-subtle);}
+.page-label{display:inline-block;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);background:var(--accent-subtle);border:1px solid var(--accent-border);padding:5px 14px;border-radius:20px;margin-bottom:20px;}
+.page-hero h1{font-size:clamp(32px,5vw,52px);font-weight:800;letter-spacing:-1.5px;margin-bottom:16px;}
+.page-hero p{font-size:16px;color:var(--text-secondary);max-width:520px;margin:0 auto;}
+.content-wrap{max-width:760px;margin:0 auto;padding:64px 40px 96px;}
+.section{margin-bottom:48px;}
+.section h2{font-size:22px;font-weight:700;margin-bottom:16px;}
+.section h3{font-size:16px;font-weight:600;color:var(--accent-light);margin:24px 0 8px;}
+.section p{font-size:15px;color:var(--text-secondary);margin-bottom:14px;line-height:1.75;}
+.section ul{list-style:none;padding:0;}
+.section ul li{font-size:15px;color:var(--text-secondary);padding:6px 0 6px 22px;position:relative;line-height:1.65;}
+.section ul li::before{content:'—';position:absolute;left:0;color:var(--accent);font-weight:600;}
+.divider{height:1px;background:var(--border-subtle);margin:48px 0;}
+.callout{background:var(--accent-subtle);border:1px solid var(--accent-border);border-radius:12px;padding:20px 24px;margin:24px 0;}
+.callout p{margin:0;font-size:14px;color:var(--text-secondary);}
+.callout strong{color:var(--text-primary);}
+
+/* Cookie type cards */
+.cookie-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px;}
+.cookie-card{background:var(--bg-card);border:1px solid var(--border-subtle);border-radius:14px;padding:24px;}
+.cookie-card h4{font-size:15px;font-weight:700;margin-bottom:8px;}
+.cookie-card p{font-size:14px;color:var(--text-secondary);margin:0;line-height:1.6;}
+.badge{display:inline-block;font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;margin-bottom:10px;}
+.badge-required{background:rgba(34,197,94,.12);color:#4ade80;border:1px solid rgba(34,197,94,.2);}
+.badge-optional{background:var(--accent-subtle);color:var(--accent-light);border:1px solid var(--accent-border);}
+
+.footer{border-top:1px solid var(--border-subtle);padding:40px;}
+.footer-inner{max-width:760px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;}
+.footer-inner span{font-size:13px;color:var(--text-muted);}
+.footer-links{display:flex;gap:20px;}
+.footer-links a{font-size:13px;color:var(--text-muted);transition:color .2s;}
+.footer-links a:hover{color:var(--text-primary);}
+@media(max-width:640px){
+  .navbar .container,.page-hero,.content-wrap{padding-left:20px;padding-right:20px;}
+  .cookie-grid{grid-template-columns:1fr;}
+  .footer{padding:32px 20px;}
+  .footer-inner{flex-direction:column;text-align:center;}
+}
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="container">
+    <a href="zeal-landing.html" class="nav-logo">
+      <div class="nav-logo-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="4 12 8 8 12 16 16 10 20 12"></polyline>
+        </svg>
+      </div>
+      Zeal+
+    </a>
+    <a href="zeal-landing.html" class="nav-back">← Back to Home</a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <span class="page-label">Legal</span>
+  <h1>Cookie Policy</h1>
+  <p>Last updated: April 7, 2026. Questions? <a href="mailto:support@zealplus.app">support@zealplus.app</a></p>
+</div>
+
+<div class="content-wrap">
+
+  <div class="section">
+    <p>This Cookie Policy explains how Zeal+ uses cookies and similar tracking technologies on our website (zealplus.app). This policy does not cover the Zeal+ mobile app, which does not use browser cookies.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <h2>What Are Cookies?</h2>
+    <p>Cookies are small text files placed on your device by a website when you visit it. They help the site remember information about your visit — like your preferences — and can make your next visit easier and the site more useful to you.</p>
+    <p>We also use similar technologies like local storage and session storage for the same purposes.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <h2>Cookies We Use</h2>
+    <div class="cookie-grid">
+      <div class="cookie-card">
+        <span class="badge badge-required">Required</span>
+        <h4>Essential Cookies</h4>
+        <p>Necessary for the website to function. These enable core functionality like page navigation and cannot be disabled.</p>
+      </div>
+      <div class="cookie-card">
+        <span class="badge badge-optional">Optional</span>
+        <h4>Analytics Cookies</h4>
+        <p>Anonymous page view data that helps us understand how visitors use the site. No personally identifiable information is collected.</p>
+      </div>
+    </div>
+    <div class="callout" style="margin-top:24px;">
+      <p><strong>We do not use advertising cookies.</strong> We do not place cookies for ad targeting, retargeting, or any third-party advertising network.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <h2>Third-Party Cookies</h2>
+    <p>The following third-party services may set cookies when you visit our website:</p>
+    <ul>
+      <li><strong style="color:var(--text-primary);">Google Fonts</strong> — loads the Outfit typeface used across the site. Google may set performance cookies. See <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's Privacy Policy</a> for details.</li>
+    </ul>
+    <p>We do not embed third-party social media widgets, tracking pixels, or ad scripts on this website.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <h2>Managing Cookies</h2>
+    <p>You can control cookies through your browser settings. Most browsers allow you to:</p>
+    <ul>
+      <li>View what cookies are stored and delete them individually.</li>
+      <li>Block third-party cookies.</li>
+      <li>Block cookies from specific sites.</li>
+      <li>Block all cookies (note: this may break some website functionality).</li>
+      <li>Delete all cookies when you close your browser.</li>
+    </ul>
+
+    <h3>Browser-specific instructions</h3>
+    <ul>
+      <li><a href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener">Google Chrome</a></li>
+      <li><a href="https://support.mozilla.org/en-US/kb/clear-cookies-and-site-data-firefox" target="_blank" rel="noopener">Mozilla Firefox</a></li>
+      <li><a href="https://support.apple.com/guide/safari/manage-cookies-sfri11471" target="_blank" rel="noopener">Apple Safari</a></li>
+      <li><a href="https://support.microsoft.com/en-us/microsoft-edge/delete-cookies-in-microsoft-edge" target="_blank" rel="noopener">Microsoft Edge</a></li>
+    </ul>
+
+    <p>Disabling non-essential cookies will not affect the functionality of this website.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <h2>Changes to This Policy</h2>
+    <p>We may update this Cookie Policy as our practices change. Any updates will be reflected by the "Last updated" date at the top of this page.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <h2>Contact</h2>
+    <p>Questions about cookies or this policy? Email us at <a href="mailto:support@zealplus.app">support@zealplus.app</a>.</p>
+  </div>
+
+</div>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <span>&copy; 2026 Zeal+. All rights reserved.</span>
+    <div class="footer-links">
+      <a href="privacy-policy.html">Privacy</a>
+      <a href="terms-of-service.html">Terms</a>
+      <a href="cookie-policy.html">Cookies</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
