@@ -160,23 +160,27 @@ textarea.form-input{min-height:130px;resize:vertical;}
       <p>Fill out the form and we'll get back to you as soon as possible.</p>
 
       <form id="contactForm" onsubmit="submitForm(event)">
+        <input type="hidden" name="access_key" value="63438943-d3d1-465a-aa45-b36b8dc04c4f">
+        <input type="hidden" name="subject" value="New message from zealplus.app contact form">
+        <input type="hidden" name="from_name" value="Zeal+ Website">
+        <input type="hidden" name="redirect" value="false">
         <div class="form-row">
           <div class="form-group">
             <label for="fname">First name</label>
-            <input class="form-input" id="fname" type="text" placeholder="Alex" required>
+            <input class="form-input" id="fname" name="first_name" type="text" placeholder="Your first name" required>
           </div>
           <div class="form-group">
             <label for="lname">Last name</label>
-            <input class="form-input" id="lname" type="text" placeholder="Johnson">
+            <input class="form-input" id="lname" name="last_name" type="text" placeholder="Your last name">
           </div>
         </div>
         <div class="form-group">
           <label for="email">Email address</label>
-          <input class="form-input" id="email" type="email" placeholder="alex@example.com" required>
+          <input class="form-input" id="email" name="email" type="email" placeholder="your@email.com" required>
         </div>
         <div class="form-group">
-          <label for="subject">Subject</label>
-          <select class="form-input" id="subject">
+          <label for="topic">Subject</label>
+          <select class="form-input" id="topic" name="topic">
             <option value="">Select a topic...</option>
             <option>General question</option>
             <option>Bug report</option>
@@ -189,9 +193,10 @@ textarea.form-input{min-height:130px;resize:vertical;}
         </div>
         <div class="form-group">
           <label for="message">Message</label>
-          <textarea class="form-input" id="message" placeholder="Describe your question or issue in detail..." required></textarea>
+          <textarea class="form-input" id="message" name="message" placeholder="Describe your question or issue in detail..." required></textarea>
         </div>
-        <button type="submit" class="submit-btn">Send Message</button>
+        <button type="submit" class="submit-btn" id="submitBtn">Send Message</button>
+        <p id="errorMsg" style="display:none;margin-top:12px;font-size:13px;color:#f87a7a;text-align:center;">Something went wrong. Please email us directly at <a href="mailto:support@zealplus.app">support@zealplus.app</a>.</p>
       </form>
 
       <div class="success-msg" id="successMsg">
@@ -219,10 +224,30 @@ textarea.form-input{min-height:130px;resize:vertical;}
 </footer>
 
 <script>
-function submitForm(e) {
+async function submitForm(e) {
   e.preventDefault();
-  document.getElementById('contactForm').style.display = 'none';
-  document.getElementById('successMsg').style.display = 'block';
+  const btn = document.getElementById('submitBtn');
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+
+  const data = new FormData(e.target);
+  try {
+    const res = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      body: data
+    });
+    const json = await res.json();
+    if (json.success) {
+      document.getElementById('contactForm').style.display = 'none';
+      document.getElementById('successMsg').style.display = 'block';
+    } else {
+      throw new Error('Failed');
+    }
+  } catch {
+    btn.textContent = 'Send Message';
+    btn.disabled = false;
+    document.getElementById('errorMsg').style.display = 'block';
+  }
 }
 </script>
 </body>
