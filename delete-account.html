@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Delete Your Account — Zeal+</title>
+<meta name="description" content="How to delete your Zeal+ account and data.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23f87116' stroke-width='2.5'><polyline points='4 12 8 8 12 16 16 10 20 12'/></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --accent:#f87116;--accent-light:#ff8c3a;--accent-dark:#d96010;
+  --accent-glow:rgba(248,113,22,.35);--accent-subtle:rgba(248,113,22,.08);
+  --accent-border:rgba(248,113,22,.2);
+  --bg-primary:#0a0a0a;--bg-card:#141414;--bg-elevated:#1e1e1e;
+  --border-subtle:rgba(255,255,255,.06);--border-medium:rgba(255,255,255,.1);
+  --text-primary:#ffffff;--text-secondary:rgba(255,255,255,.6);--text-muted:rgba(255,255,255,.35);
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Outfit',sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.6;-webkit-font-smoothing:antialiased;}
+a{color:var(--accent);text-decoration:none;}
+a:hover{color:var(--accent-light);}
+
+.navbar{position:sticky;top:0;z-index:100;background:rgba(10,10,10,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-subtle);}
+.navbar .container{display:flex;align-items:center;justify-content:space-between;padding:16px 40px;}
+.nav-logo{display:flex;align-items:center;gap:10px;font-size:20px;font-weight:700;color:var(--text-primary);text-decoration:none;letter-spacing:-.5px;}
+.nav-logo-icon{width:34px;height:34px;background:linear-gradient(135deg,var(--accent) 0%,var(--accent-light) 100%);border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.nav-logo-icon svg{width:20px;height:20px;}
+.nav-back{font-size:14px;font-weight:500;color:var(--text-secondary);display:flex;align-items:center;gap:6px;transition:color .2s;}
+.nav-back:hover{color:var(--text-primary);}
+
+.page-hero{padding:72px 40px 48px;text-align:center;border-bottom:1px solid var(--border-subtle);}
+.page-label{display:inline-block;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);background:var(--accent-subtle);border:1px solid var(--accent-border);padding:5px 14px;border-radius:20px;margin-bottom:20px;}
+.page-hero h1{font-size:clamp(32px,5vw,52px);font-weight:800;letter-spacing:-1.5px;margin-bottom:16px;}
+.page-hero p{font-size:16px;color:var(--text-secondary);max-width:520px;margin:0 auto;}
+
+.content-wrap{max-width:760px;margin:0 auto;padding:64px 40px 96px;}
+.section{margin-bottom:48px;}
+.section h2{font-size:22px;font-weight:700;margin-bottom:16px;color:var(--text-primary);}
+.section h3{font-size:16px;font-weight:600;color:var(--accent-light);margin:24px 0 8px;}
+.section p{font-size:15px;color:var(--text-secondary);margin-bottom:14px;line-height:1.75;}
+.section ol,.section ul{padding-left:0;}
+.section ol{counter-reset:step;list-style:none;}
+.section ol li{font-size:15px;color:var(--text-secondary);padding:10px 0 10px 40px;position:relative;line-height:1.65;counter-increment:step;}
+.section ol li::before{content:counter(step);position:absolute;left:0;top:8px;width:24px;height:24px;background:var(--accent-subtle);border:1px solid var(--accent-border);color:var(--accent-light);font-weight:700;font-size:13px;border-radius:50%;display:flex;align-items:center;justify-content:center;}
+.section ul{list-style:none;}
+.section ul li{font-size:15px;color:var(--text-secondary);padding:6px 0 6px 22px;position:relative;line-height:1.65;}
+.section ul li::before{content:'—';position:absolute;left:0;color:var(--accent);font-weight:600;}
+.divider{height:1px;background:var(--border-subtle);margin:48px 0;}
+.callout{background:var(--accent-subtle);border:1px solid var(--accent-border);border-radius:12px;padding:20px 24px;margin:24px 0;}
+.callout p{margin:0;font-size:14px;color:var(--text-secondary);}
+.callout strong{color:var(--text-primary);}
+.warn{background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.25);border-radius:12px;padding:20px 24px;margin:24px 0;}
+.warn p{margin:0;font-size:14px;color:var(--text-secondary);}
+.warn strong{color:#f87171;}
+
+.footer{border-top:1px solid var(--border-subtle);padding:40px;}
+.footer-inner{max-width:760px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;}
+.footer-inner span{font-size:13px;color:var(--text-muted);}
+.footer-links{display:flex;gap:20px;}
+.footer-links a{font-size:13px;color:var(--text-muted);transition:color .2s;}
+.footer-links a:hover{color:var(--text-primary);}
+
+@media(max-width:640px){
+  .navbar .container,.page-hero,.content-wrap{padding-left:20px;padding-right:20px;}
+  .footer{padding:32px 20px;}
+  .footer-inner{flex-direction:column;text-align:center;}
+}
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="container">
+    <a href="index.html" class="nav-logo">
+      <img src="icon.png" alt="Zeal+" style="width:34px;height:34px;border-radius:9px;flex-shrink:0;">
+      Zeal+
+    </a>
+    <a href="index.html" class="nav-back">← Back to Home</a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <span class="page-label">Account</span>
+  <h1>Delete Your Account</h1>
+  <p>How to permanently delete your Zeal+ account and data. Questions? <a href="mailto:support@zealplus.app">support@zealplus.app</a></p>
+</div>
+
+<div class="content-wrap">
+
+  <div class="section">
+    <p>You can permanently delete your Zeal+ account and all associated data directly from within the app — no need to contact support.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <h2>How to Delete Your Account</h2>
+    <ol>
+      <li>Open the Zeal+ app and sign in.</li>
+      <li>Go to <strong style="color:var(--text-primary);">Settings</strong>.</li>
+      <li>Scroll to the <strong style="color:var(--text-primary);">Danger Zone</strong> section.</li>
+      <li>Tap <strong style="color:var(--text-primary);">Delete Account &amp; All Data</strong>.</li>
+      <li>Confirm by tapping <strong style="color:var(--text-primary);">Delete Everything</strong>.</li>
+    </ol>
+    <div class="warn">
+      <p><strong>This action is immediate and cannot be undone.</strong> Once confirmed, your account and data are permanently erased and you're signed out.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <h2>What Gets Deleted</h2>
+    <ul>
+      <li>Your account and sign-in credentials</li>
+      <li>Workout history, logs, sets, reps, and personal records</li>
+      <li>Training plans, streaks, and progress data</li>
+      <li>Profile information — fitness level, equipment, body metrics</li>
+      <li>Run tracking history and GPS routes</li>
+      <li>Any connected Health/Health Connect sync data stored in our systems</li>
+    </ul>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <h2>What May Be Retained</h2>
+    <p>We may retain limited data for a short period where required by law or for legitimate business purposes, such as:</p>
+    <ul>
+      <li>Transaction records related to subscription purchases (retained per financial record-keeping requirements)</li>
+      <li>Aggregated, de-identified data that can no longer be linked to you</li>
+    </ul>
+    <p>All other personal data is deleted or fully anonymized within 30 days of your deletion request, consistent with our <a href="privacy-policy.html">Privacy Policy</a>.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <h2>Can't Access the App?</h2>
+    <p>If you're unable to sign in or use the in-app deletion flow, email <a href="mailto:support@zealplus.app">support@zealplus.app</a> from the address associated with your account and we'll process the deletion manually within 30 days.</p>
+  </div>
+
+</div>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <span>&copy; 2026 Zeal+. All rights reserved.</span>
+    <div class="footer-links">
+      <a href="privacy-policy.html">Privacy</a>
+      <a href="terms-of-service.html">Terms</a>
+      <a href="cookie-policy.html">Cookies</a>
+      <a href="delete-account.html">Delete Account</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
